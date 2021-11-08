@@ -1,0 +1,75 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/auth/1.0.0/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": "29811"
+                }
+            ],
+            "UpstreamPathTemplate": "/auth/{everything}",
+            "UpstreamHttpMethod": [
+                "GET",
+                "POST",
+                "UPDATE",
+                "DELETE"
+            ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/gastronomy/1.0.0/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": "37736"
+                },
+            ],
+            "UpstreamPathTemplate": "/gastronomy/{everything}",
+            "UpstreamHttpMethod": [
+                "GET",
+                "POST",
+                "UPDATE",
+                "DELETE"
+            ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/inventory/1.0.0/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": "13221"
+                }
+            ],
+            "UpstreamPathTemplate": "/inventory/{everything}",
+            "UpstreamHttpMethod": [
+                "GET",
+                "POST",
+                "UPDATE",
+                "DELETE"
+            ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/invoicing/1.0.0/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": "9067"
+                }
+            ],
+            "UpstreamPathTemplate": "/invoicing/{everything}",
+            "UpstreamHttpMethod": [
+                "GET",
+                "POST",
+                "UPDATE",
+                "DELETE"
+            ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:29602"
+    }
+}
