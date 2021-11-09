@@ -1,6 +1,7 @@
 {
     "Routes": [
         {
+            "Priority": 0,
             "DownstreamPathTemplate": "/api/auth/1.0.0/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
@@ -15,16 +16,40 @@
                 "POST",
                 "UPDATE",
                 "DELETE"
-            ]
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "IndfKey",
+                "AllowedScopes": []
+            },
+            "AddHeadersToRequest": {
+                "claim_nameid": "Claims[claim_nameid]> value > |",
+                "claim_unique_name": "Claims[claim_unique_name]> value > |",
+                "claim_role": "Claims[claim_role]> value > |",
+                "claim_enterprises": "Claims[claim_enterprises]> value > |"
+            }
         },
         {
+            "Priority": 1,
+            "DownstreamPathTemplate": "/api/auth/1.0.0/msv/no/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": "29811"
+                }
+            ],
+            "UpstreamPathTemplate": "/auth/msv/no/{everything}",
+            "UpstreamHttpMethod": [ "POST" ]
+        },
+        {
+            "Priority": 0,
             "DownstreamPathTemplate": "/api/gastronomy/1.0.0/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
                     "Port": "37736"
-                },
+                }
             ],
             "UpstreamPathTemplate": "/gastronomy/{everything}",
             "UpstreamHttpMethod": [
@@ -32,9 +57,21 @@
                 "POST",
                 "UPDATE",
                 "DELETE"
-            ]
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "IndfKey",
+                "AllowedScopes": []
+            },
+            "AddHeadersToRequest": {
+                "claim_nameid": "Claims[claim_nameid]> value > |",
+                "claim_unique_name": "Claims[claim_unique_name]> value > |",
+                "claim_role": "Claims[claim_role]> value > |",
+                "claim_enterprises": "Claims[claim_enterprises]> value > |"
+            }
         },
         {
+
+            "Priority": 0,
             "DownstreamPathTemplate": "/api/inventory/1.0.0/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
@@ -49,9 +86,21 @@
                 "POST",
                 "UPDATE",
                 "DELETE"
-            ]
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "IndfKey",
+                "AllowedScopes": []
+            },
+            "AddHeadersToRequest": {
+                "claim_nameid": "Claims[claim_nameid]> value > |",
+                "claim_unique_name": "Claims[claim_unique_name]> value > |",
+                "claim_role": "Claims[claim_role]> value > |",
+                "claim_enterprises": "Claims[claim_enterprises]> value > |"
+            }
         },
         {
+
+            "Priority": 0,
             "DownstreamPathTemplate": "/api/invoicing/1.0.0/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
@@ -66,7 +115,17 @@
                 "POST",
                 "UPDATE",
                 "DELETE"
-            ]
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "IndfKey",
+                "AllowedScopes": []
+            },
+            "AddHeadersToRequest": {
+                "claim_nameid": "Claims[claim_nameid]> value > |",
+                "claim_unique_name": "Claims[claim_unique_name]> value > |",
+                "claim_role": "Claims[claim_role]> value > |",
+                "claim_enterprises": "Claims[claim_enterprises]> value > |"
+            }
         }
     ],
     "GlobalConfiguration": {
