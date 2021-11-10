@@ -25,7 +25,7 @@
                 "claim_nameid": "Claims[claim_nameid]> value > |",
                 "claim_unique_name": "Claims[claim_unique_name]> value > |",
                 "claim_role": "Claims[claim_role]> value > |",
-                "claim_enterprises": "Claims[claim_enterprises]> value > |"
+                "claim_e2ud": "Claims[claim_e2ud]> value > |"
             }
         },
         {
@@ -66,7 +66,7 @@
                 "claim_nameid": "Claims[claim_nameid]> value > |",
                 "claim_unique_name": "Claims[claim_unique_name]> value > |",
                 "claim_role": "Claims[claim_role]> value > |",
-                "claim_enterprises": "Claims[claim_enterprises]> value > |"
+                "claim_e2ud": "Claims[claim_e2ud]> value > |"
             }
         },
         {
@@ -95,7 +95,7 @@
                 "claim_nameid": "Claims[claim_nameid]> value > |",
                 "claim_unique_name": "Claims[claim_unique_name]> value > |",
                 "claim_role": "Claims[claim_role]> value > |",
-                "claim_enterprises": "Claims[claim_enterprises]> value > |"
+                "claim_e2ud": "Claims[claim_e2ud]> value > |"
             }
         },
         {
@@ -124,7 +124,7 @@
                 "claim_nameid": "Claims[claim_nameid]> value > |",
                 "claim_unique_name": "Claims[claim_unique_name]> value > |",
                 "claim_role": "Claims[claim_role]> value > |",
-                "claim_enterprises": "Claims[claim_enterprises]> value > |"
+                "claim_e2ud": "Claims[claim_e2ud]> value > |"
             }
         }
     ],

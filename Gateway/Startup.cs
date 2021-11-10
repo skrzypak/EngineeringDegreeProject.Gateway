@@ -44,6 +44,15 @@ namespace Gateway
                     ValidAudience = authenticationSettings.JwtIssuer,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationSettings.JwtKey)),
                 };
+                cfg.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+
+                        context.Token = context.Request.Cookies["X-Token"];
+                        return System.Threading.Tasks.Task.CompletedTask;
+                    }
+                };
             });
             #endregion
 
