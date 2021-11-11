@@ -3,11 +3,11 @@
         {
             "Priority": 0,
             "DownstreamPathTemplate": "/api/auth/1.0.0/{everything}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": "29811"
+                    "Host": "edp-auth.azurewebsites.net",
+                    "Port": "443"
                 }
             ],
             "UpstreamPathTemplate": "/auth/{everything}",
@@ -31,11 +31,11 @@
         {
             "Priority": 1,
             "DownstreamPathTemplate": "/api/auth/1.0.0/msv/no/{everything}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": "29811"
+                    "Host": "edp-auth.azurewebsites.net",
+                    "Port": "443"
                 }
             ],
             "UpstreamPathTemplate": "/auth/msv/no/{everything}",
@@ -44,11 +44,11 @@
         {
             "Priority": 0,
             "DownstreamPathTemplate": "/api/gastronomy/1.0.0/{everything}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": "37736"
+                    "Host": "edp-gastronomy.azurewebsites.net",
+                    "Port": "443"
                 }
             ],
             "UpstreamPathTemplate": "/gastronomy/{everything}",
@@ -73,11 +73,11 @@
 
             "Priority": 0,
             "DownstreamPathTemplate": "/api/inventory/1.0.0/{everything}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": "13221"
+                    "Host": "edp-inventory.azurewebsites.net",
+                    "Port": "443"
                 }
             ],
             "UpstreamPathTemplate": "/inventory/{everything}",
@@ -102,11 +102,11 @@
 
             "Priority": 0,
             "DownstreamPathTemplate": "/api/invoicing/1.0.0/{everything}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": "9067"
+                    "Host": "edp-invoicing.azurewebsites.net",
+                    "Port": "443"
                 }
             ],
             "UpstreamPathTemplate": "/invoicing/{everything}",
@@ -129,6 +129,6 @@
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "http://localhost:29602"
+        "BaseUrl": "https://edp-gateway.azurewebsites.net"
     }
 }
