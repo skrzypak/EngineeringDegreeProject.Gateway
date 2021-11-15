@@ -49,7 +49,7 @@ namespace Gateway
                     OnMessageReceived = context =>
                     {
 
-                        context.Token = context.Request.Cookies["X-Token"];
+                        context.Token = context.Request.Cookies["SESSIONID"];
                         return System.Threading.Tasks.Task.CompletedTask;
                     }
                 };
