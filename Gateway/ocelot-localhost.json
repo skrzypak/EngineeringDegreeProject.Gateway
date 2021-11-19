@@ -6,8 +6,8 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "edp-auth.azurewebsites.net",
-                    "Port": "443"
+                    "Host": "localhost",
+                    "Port": "44372"
                 }
             ],
             "UpstreamPathTemplate": "/auth/{everything}",
@@ -34,8 +34,8 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "edp-auth.azurewebsites.net",
-                    "Port": "443"
+                    "Host": "localhost",
+                    "Port": "44372"
                 }
             ],
             "UpstreamPathTemplate": "/auth/msv/no/{everything}",
@@ -49,8 +49,8 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "edp-gastronomy.azurewebsites.net",
-                    "Port": "443"
+                    "Host": "localhost",
+                    "Port": "44389"
                 }
             ],
             "UpstreamPathTemplate": "/gastronomy/{everything}",
@@ -78,8 +78,8 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "edp-inventory.azurewebsites.net",
-                    "Port": "443"
+                    "Host": "localhost",
+                    "Port": "44324"
                 }
             ],
             "UpstreamPathTemplate": "/inventory/{everything}",
@@ -107,8 +107,8 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "edp-invoicing.azurewebsites.net",
-                    "Port": "443"
+                    "Host": "localhost",
+                    "Port": "44314"
                 }
             ],
             "UpstreamPathTemplate": "/invoicing/{everything}",
@@ -137,7 +137,7 @@
                 {
                     "Name": "Auth Microservice API",
                     "Version": "v1",
-                    "Url": "https://edp-auth.azurewebsites.net/swagger/v1/swagger.json"
+                    "Url": "https://localhost:44372/swagger/v1/swagger.json"
                 }
             ]
         },
@@ -147,7 +147,7 @@
                 {
                     "Name": "Gastronomy Microservice API",
                     "Version": "v1",
-                    "Url": "https://edp-gastronomy.azurewebsites.net/swagger/v1/swagger.json"
+                    "Url": "https://localhost:44389/swagger/v1/swagger.json"
                 }
             ]
         },
@@ -157,7 +157,7 @@
                 {
                     "Name": "Inventory Microservice API",
                     "Version": "v1",
-                    "Url": "https://edp-inventory.azurewebsites.net/swagger/v1/swagger.json"
+                    "Url": "https://localhost:44324/swagger/v1/swagger.json"
                 }
             ]
         },
@@ -167,12 +167,12 @@
                 {
                     "Name": "Invoicing Microservice API",
                     "Version": "v1",
-                    "Url": "https://edp-invoicing.azurewebsites.net/swagger/v1/swagger.json"
+                    "Url": "https://localhost:44314/swagger/v1/swagger.json"
                 }
             ]
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "https://edp-gateway.azurewebsites.net"
+        "BaseUrl": "https://localhost:44339/"
     }
 }

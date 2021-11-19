@@ -17,6 +17,7 @@ namespace Gateway
                 .ConfigureAppConfiguration((host, config) =>
                 {
                     config.AddJsonFile("ocelot.json");
+                    //config.AddJsonFile("ocelot-localhost.json");
                 })
                     .UseStartup<Startup>();
     }

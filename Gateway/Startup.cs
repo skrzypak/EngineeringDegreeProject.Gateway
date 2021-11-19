@@ -7,9 +7,15 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Microsoft.Extensions.Primitives;
+using System.Net.Http;
+using Ocelot.Request.Middleware;
+using Gateway.Core.Errors;
+using System.Collections.Generic;
 
 namespace Gateway
 {
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -48,7 +54,6 @@ namespace Gateway
                 {
                     OnMessageReceived = context =>
                     {
-
                         context.Token = context.Request.Cookies["SESSIONID"];
                         return System.Threading.Tasks.Task.CompletedTask;
                     }
@@ -56,7 +61,9 @@ namespace Gateway
             });
             #endregion
 
+            services.AddMvcCore().AddApiExplorer();
             services.AddOcelot(Configuration);
+            services.AddSwaggerForOcelot(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,11 +72,12 @@ namespace Gateway
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwaggerForOcelotUI(c => {
+                    c.RoutePrefix = string.Empty;
+                });
             }
 
             app.UseHttpsRedirection();
-
-            app.UseRouting();
 
             app.UseCors(x => x
                 .SetIsOriginAllowed(origin => true)
@@ -77,15 +85,71 @@ namespace Gateway
                 .AllowAnyHeader()
                 .AllowCredentials());
 
+            //app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseOcelot().Wait();
-
-            app.UseEndpoints(endpoints =>
+            var configuration = new OcelotPipelineConfiguration
             {
-                endpoints.MapControllers();
-            });
+                PreQueryStringBuilderMiddleware = async (ctx, next) =>
+                {
+                    #region ESP_AUTH
+                    var downstreamRoute = ctx.Items.DownstreamRoute();
+                    string key = downstreamRoute.Key;
+
+                    if(key is null)
+                    {
+                        ctx.Items.SetError(new OcelotKeyError());
+                        return;
+                    }
+
+                    if (key is not null && key != "AuthMsvKey")
+                    {
+                        string ClaimId = ctx.User.FindFirst(c => c.Type == "claim_id").Value;
+
+                        if (string.IsNullOrEmpty(ClaimId))
+                        {
+                            ctx.Items.SetError(new ClaimIdError());
+                            return;
+                        }
+
+                        StringValues espIdSv;
+                        bool operationStatus;
+                        operationStatus = ctx.Request.Query.TryGetValue("espId", out espIdSv);
+
+                        if(operationStatus)
+                        {
+                            var client = new HttpClient();
+                            client.DefaultRequestHeaders.Add("claim_id", ClaimId);
+                            var authMsvGatewayUrl = Configuration.GetValue<string>("AuthGatewayApiUrl");
+                            var response = await client.GetAsync($"{authMsvGatewayUrl}/{espIdSv}");
+
+                            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                            {
+                                var respContentEudId = await response.Content.ReadAsStringAsync();
+                                var downstreamRequest = (DownstreamRequest) ctx.Items["DownstreamRequest"];
+                                downstreamRequest.Headers.Add("param_esp_id", espIdSv.ToString());
+                                downstreamRequest.Headers.Add("param_eud_id", respContentEudId);
+                                ctx.Items["DownstreamRequest"] = downstreamRequest;
+                            } else
+                            {
+                                ctx.Items.SetError(new AuthoriseEspError(espIdSv));
+                                return;
+                            }
+                        }
+                    }
+                    #endregion
+                    await next.Invoke();
+                }
+            };
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
+
+            app.UseOcelot(configuration).Wait();
         }
     }
 }
