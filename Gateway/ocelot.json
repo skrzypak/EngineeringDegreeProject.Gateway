@@ -14,7 +14,8 @@
             "UpstreamHttpMethod": [
                 "GET",
                 "POST",
-                "UPDATE",
+                "PUT",
+                "PATCH",
                 "DELETE"
             ],
             "AuthenticationOptions": {
@@ -55,10 +56,11 @@
             ],
             "UpstreamPathTemplate": "/gastronomy/{everything}",
             "UpstreamHttpMethod": [
-                "GET",
-                "POST",
-                "UPDATE",
-                "DELETE"
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
             ],
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "IndfKey",
@@ -84,10 +86,11 @@
             ],
             "UpstreamPathTemplate": "/inventory/{everything}",
             "UpstreamHttpMethod": [
-                "GET",
-                "POST",
-                "UPDATE",
-                "DELETE"
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
             ],
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "IndfKey",
@@ -113,10 +116,11 @@
             ],
             "UpstreamPathTemplate": "/invoicing/{everything}",
             "UpstreamHttpMethod": [
-                "GET",
-                "POST",
-                "UPDATE",
-                "DELETE"
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
             ],
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "IndfKey",
