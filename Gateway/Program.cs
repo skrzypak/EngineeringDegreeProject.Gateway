@@ -16,8 +16,8 @@ namespace Gateway
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((host, config) =>
                 {
-                    config.AddJsonFile("ocelot.json");
-                    //config.AddJsonFile("ocelot-localhost.json");
+                    //config.AddJsonFile("ocelot.json");
+                    config.AddJsonFile("ocelot-localhost.json");
                 })
                     .UseStartup<Startup>();
     }

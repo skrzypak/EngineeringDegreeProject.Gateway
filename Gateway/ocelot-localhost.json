@@ -40,7 +40,7 @@
                 }
             ],
             "UpstreamPathTemplate": "/auth/msv/no/{everything}",
-            "UpstreamHttpMethod": [ "POST" ],
+            "UpstreamHttpMethod": [ "GET", "POST" ],
             "Key": "AuthMsvKey",
             "SwaggerKey": "AuthMsvSwaggerKey"
         },
