@@ -106,7 +106,7 @@
         {
 
             "Priority": 0,
-            "DownstreamPathTemplate": "/api/invoicing/1.0.0/{everything}",
+            "DownstreamPathTemplate": "/api/purchases/1.0.0/{everything}",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -114,7 +114,7 @@
                     "Port": "44314"
                 }
             ],
-            "UpstreamPathTemplate": "/invoicing/{everything}",
+            "UpstreamPathTemplate": "/purchases/{everything}",
             "UpstreamHttpMethod": [
               "GET",
               "POST",

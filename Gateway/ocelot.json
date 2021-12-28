@@ -103,36 +103,36 @@
             "Key": "InventoryMsvKey",
             "SwaggerKey": "InventoryMsvSwaggerKey"
         },
-        {
+      {
 
-            "Priority": 0,
-            "DownstreamPathTemplate": "/api/invoicing/1.0.0/{everything}",
-            "DownstreamScheme": "https",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "edp-invoicing.azurewebsites.net",
-                    "Port": "443"
-                }
-            ],
-            "UpstreamPathTemplate": "/invoicing/{everything}",
-            "UpstreamHttpMethod": [
-              "GET",
-              "POST",
-              "PUT",
-              "PATCH",
-              "DELETE"
-            ],
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "IndfKey",
-                "AllowedScopes": []
-            },
-            "AddHeadersToRequest": {
-                "claim_id": "Claims[claim_id]> value > |",
-                "claim_username": "Claims[claim_username]> value > |"
-            },
-            "Key": "InvoicingMsvKey",
-            "SwaggerKey": "InvoicingMsvSwaggerKey"
-        }
+        "Priority": 0,
+        "DownstreamPathTemplate": "/api/purchases/1.0.0/{everything}",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "edp-invoicing.azurewebsites.net",
+            "Port": "443"
+          }
+        ],
+        "UpstreamPathTemplate": "/purchases/{everything}",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE"
+        ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "IndfKey",
+          "AllowedScopes": []
+        },
+        "AddHeadersToRequest": {
+          "claim_id": "Claims[claim_id]> value > |",
+          "claim_username": "Claims[claim_username]> value > |"
+        },
+        "Key": "InvoicingMsvKey",
+        "SwaggerKey": "InvoicingMsvSwaggerKey"
+      }
     ],
     "SwaggerEndPoints": [
         {
